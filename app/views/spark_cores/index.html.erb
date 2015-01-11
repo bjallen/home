@@ -1,0 +1,28 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Spark Cores</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Device</th>
+      <th>Name</th>
+      <th colspan="2"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @spark_cores.each do |spark_core| %>
+      <tr>
+        <td><%= spark_core.device_id %></td>
+        <td><%= spark_core.name %></td>
+        <td><%= link_to 'Edit', edit_spark_core_path(spark_core) %></td>
+        <td><%= link_to 'Destroy', spark_core, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Spark core', new_spark_core_path %>

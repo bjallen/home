@@ -1,0 +1,25 @@
+<%= form_for(@spark_core) do |f| %>
+  <% if @spark_core.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@spark_core.errors.count, "error") %> prohibited this spark_core from being saved:</h2>
+
+      <ul>
+      <% @spark_core.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :device_id %><br>
+    <%= f.text_field :device_id %>
+  </div>
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
