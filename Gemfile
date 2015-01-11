@@ -12,6 +12,7 @@ gem 'jquery-rails'
 
 gem 'jbuilder', '~> 2.0'
 gem 'newrelic_rpm'
+gem 'ruby_spark'
 
 gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'rails_12factor', group: :production
