@@ -1,0 +1,28 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Thermometers</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Spark core</th>
+      <th>Room</th>
+      <th colspan="2"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @thermometers.each do |thermometer| %>
+      <tr>
+        <td><%= thermometer.spark_core.name %></td>
+        <td><%= thermometer.room %></td>
+        <td><%= link_to 'Edit', edit_thermometer_path(thermometer) %></td>
+        <td><%= link_to 'Destroy', thermometer, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Thermometer', new_thermometer_path %>
