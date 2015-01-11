@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150111221730) do
+ActiveRecord::Schema.define(version: 20150111234059) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,10 +24,13 @@ ActiveRecord::Schema.define(version: 20150111221730) do
   end
 
   create_table "temperature_readings", force: :cascade do |t|
-    t.decimal  "temperature", precision: 7, scale: 4
-    t.datetime "created_at",                          null: false
-    t.datetime "updated_at",                          null: false
+    t.decimal  "temperature",    precision: 7, scale: 4
+    t.datetime "created_at",                             null: false
+    t.datetime "updated_at",                             null: false
+    t.integer  "thermometer_id"
   end
+
+  add_index "temperature_readings", ["thermometer_id"], name: "index_temperature_readings_on_thermometer_id", using: :btree
 
   create_table "thermometers", force: :cascade do |t|
     t.integer  "spark_core_id"
@@ -38,5 +41,6 @@ ActiveRecord::Schema.define(version: 20150111221730) do
 
   add_index "thermometers", ["spark_core_id"], name: "index_thermometers_on_spark_core_id", using: :btree
 
+  add_foreign_key "temperature_readings", "thermometers"
   add_foreign_key "thermometers", "spark_cores"
 end

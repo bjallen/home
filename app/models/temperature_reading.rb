@@ -1,3 +1,5 @@
 class TemperatureReading < ActiveRecord::Base
-    validates :temperature, :presence => true
+  belongs_to :thermometer
+  validates :temperature, :thermometer,
+            :presence => true
 end
