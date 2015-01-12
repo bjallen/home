@@ -1,5 +1,5 @@
 namespace :readings do
-  task :read_room_two_temp => :environment do
+  task :read_all_temperatures => :environment do
     thermometers = Thermometer.all
     thermometers.each do |thermometer|
       reading = Thermometer.temperature_readings.build
