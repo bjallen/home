@@ -1,4 +1,5 @@
 source 'https://rubygems.org'
+source 'https://rails-assets.org'
 
 gem 'rails', '4.2.0'
 gem 'pg'
@@ -17,6 +18,10 @@ gem 'ruby_spark'
 gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'rails_12factor', group: :production
 gem 'guard-rspec', require: false, group: :development
+
+source 'https://rails-assets.org' do
+  gem 'rails-assets-highcharts'
+end
 
 group :development, :test do
   gem 'rspec-rails'

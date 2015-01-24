@@ -1,7 +1,14 @@
-class GroupedTemperatureReadingsQuery
+class TemperatureReadingsQuery
   PATTERNS = {
     :hour => "%Y-%m-%dT%H",
     :day => "%Y-%m-%d"
+  }
+
+  TIMEFRAMES = {
+    :hour => 1.hour.ago,
+    :day => 1.day.ago,
+    :week => 1.week.ago,
+    :month => 1.month.ago
   }
 
   def initialize(thermometer, start_date = 1.month.ago)

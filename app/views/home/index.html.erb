@@ -1,0 +1,4 @@
+<% @thermometers.each do |thermometer| %>
+  <h2><%= thermometer.room %></h2>
+  <h1><%= "#{convert_celsius_to_fahrenheit(thermometer.temperature_readings.last.temperature).to_s} °F" %></h1>
+<% end %>

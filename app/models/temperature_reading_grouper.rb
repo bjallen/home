@@ -1,0 +1,2 @@
+class TemperatureReadingGrouper
+end
