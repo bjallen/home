@@ -1,10 +1,12 @@
 require 'rails_helper'
 
 RSpec.describe TemperatureReadingsController, :type => :controller do
+
+  let(:thermometer) { instance_double(Thermometer) }
+  let(:query) { instance_double(TemperatureReadingsQuery) }
+
   describe "GET index" do
     it "assigns grouped temps as as @avg_temp_by_time" do
-      thermometer = double
-      query = double
       readings = double
       expect(Thermometer).to receive(:find).with("1").and_return(thermometer)
       expect(TemperatureReadingsQuery).to receive(:new).with(thermometer).and_return(query)
