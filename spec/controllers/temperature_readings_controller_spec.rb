@@ -6,7 +6,7 @@ RSpec.describe TemperatureReadingsController, :type => :controller do
       thermometer = double
       query = double
       readings = double
-      expect(Thermometer).to receive(:find).with(1).and_return(thermometer)
+      expect(Thermometer).to receive(:find).with("1").and_return(thermometer)
       expect(TemperatureReadingsQuery).to receive(:new).with(thermometer).and_return(query)
       expect(query).to receive(:avg_temp_grouped_by).and_return(readings)
       get :index, :thermometer_id => 1, :unit => "hour", :format => :json
