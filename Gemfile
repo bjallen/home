@@ -21,6 +21,7 @@ gem 'guard-rspec', require: false, group: :development
 
 source 'https://rails-assets.org' do
   gem 'rails-assets-highcharts'
+  gem 'rails-assets-lodash'
 end
 
 group :development, :test do

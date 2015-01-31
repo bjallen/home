@@ -1,5 +1,7 @@
 @avg_temp_by_time.map do |hour, temp|
   {
-    "#{convert_celsius_to_fahrenheit(temp).to_s} °F" => Time.strptime(hour, "%Y-%m-%dT%H").strftime("%I:%M %p, %A %b %d %Y")
+    "time" => Time.strptime(hour, "%Y-%m-%dT%H"),
+    "celcius" => temp.to_s,
+    "fahrenheit" => convert_celsius_to_fahrenheit(temp).to_s
   }
 end.to_json
