@@ -1,5 +1,5 @@
 $(function () {
-    $.getJSON('http://localhost:3000/thermometers/1/temperature_readings.json', function (json) {
+    $.getJSON('/thermometers/1/temperature_readings.json', function (json) {
         $('#container').highcharts({
             title: {
                 text: 'Hourly Average Temperature',
