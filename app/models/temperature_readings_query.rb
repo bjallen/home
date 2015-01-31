@@ -26,6 +26,5 @@ class TemperatureReadingsQuery
   def fetch_readings(thermometer, start_date)
     thermometer.temperature_readings
       .where("created_at > ?", start_date)
-      .order("created_at desc")
   end
 end
