@@ -1,36 +1,16 @@
 $(function () {
-    $.getJSON('/thermometers/1/temperature_readings.json', function (json) {
-        $('#container').highcharts({
-            title: {
-                text: 'Hourly Average Temperature',
-                x: -20 //center
-            },
-            xAxis: {
-                categories: _.map(json, function(reading) { return reading["time"] })
-            },
-            yAxis: {
-                title: {
-                    text: 'Temperature (°F)'
-                },
-                plotLines: [{
-                    value: 0,
-                    width: 1,
-                    color: '#808080'
-                }]
-            },
-            tooltip: {
-                valueSuffix: '°F'
-            },
-            legend: {
-                layout: 'vertical',
-                align: 'right',
-                verticalAlign: 'middle',
-                borderWidth: 0
-            },
-            series: [{
-                name: 'James’ Room',
-                data: _.map(json, function(reading) { return parseFloat(reading["fahrenheit"]) })
-            }]
+    d3.json('/thermometers/1/temperature_readings.json', function(data) {
+        data = MG.convert.date(data, 'time', '%Y-%m-%dT%H:%M:%S.%LZ');
+        data = MG.convert.number(data, 'fahrenheit');
+
+        MG.data_graphic({
+          data: data,
+          width: $('.result').width(),
+          height: $('.result').height(),
+          target: ".result",
+          x_accessor: "time",
+          y_accessor: "fahrenheit",
+          interpolate: "monotone"
         });
     });
 });

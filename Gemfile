@@ -20,8 +20,8 @@ gem 'rails_12factor', group: :production
 gem 'guard-rspec', require: false, group: :development
 
 source 'https://rails-assets.org' do
-  gem 'rails-assets-highcharts'
   gem 'rails-assets-lodash'
+  gem 'rails-assets-metrics-graphics'
 end
 
 group :development, :test do
