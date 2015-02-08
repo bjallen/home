@@ -16,10 +16,11 @@ $(function () {
           x_accessor: "time",
           y_accessor: "fahrenheit",
           interpolate: "monotone",
-          height: 200,
-          width: 400,
-          min_y: 40,
-          max_y: 100
+          small_text: true,
+          full_height: true,
+          full_width: true,
+          min_y: 50,
+          max_y: 90
         });
       });
     });
