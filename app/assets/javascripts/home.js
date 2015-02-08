@@ -10,7 +10,9 @@ $(function () {
           target: ".room-1",
           x_accessor: "time",
           y_accessor: "fahrenheit",
-          interpolate: "monotone"
+          interpolate: "monotone",
+          height: 200,
+          width: 400
         });
     });
 
@@ -25,7 +27,9 @@ $(function () {
           target: ".room-2",
           x_accessor: "time",
           y_accessor: "fahrenheit",
-          interpolate: "monotone"
+          interpolate: "monotone",
+          height: 200,
+          width: 400
         });
     });
 });
