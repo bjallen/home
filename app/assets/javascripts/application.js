@@ -14,5 +14,6 @@
 //= require jquery_ujs
 //= require d3
 //= require metrics-graphics
+//= require moment
 //= require lodash
 //= require_tree .

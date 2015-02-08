@@ -1,11 +1,13 @@
 $(function () {
   $.getJSON("/thermometers.json", function(thermometers) {
-    _(thermometers).forEach(function(thermometer) {
+    _.forEach(thermometers, function(thermometer) {
       var thermometerId = thermometer["id"];
       var readingsUrl = '/thermometers/' + thermometerId + '/temperature_readings.json'
 
       d3.json(readingsUrl, function(data) {
-        data = MG.convert.date(data, 'time', '%Y-%m-%dT%H:%M:%SZ');
+        data = _.forEach(data, function(reading) {
+          reading["time"] = moment(reading["time"]).toDate();
+        });
         data = MG.convert.number(data, 'fahrenheit');
 
         MG.data_graphic({
@@ -17,10 +19,13 @@ $(function () {
           y_accessor: "fahrenheit",
           interpolate: "monotone",
           small_text: true,
-          full_height: true,
-          full_width: true,
-          min_y: 50,
-          max_y: 90
+          height: 200,
+          width: 400,
+          min_y: 55,
+          max_y: 80,
+          xax_format: function(date) {
+            return moment(date).local().format('ha');
+          }
         });
       });
     });

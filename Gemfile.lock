@@ -144,6 +144,7 @@ GEM
     rails-assets-metrics-graphics (2.1.0)
       rails-assets-d3 (>= 3.4.8)
       rails-assets-jquery (>= 1.11.1)
+    rails-assets-moment (2.9.0)
     rails-deprecated_sanitizer (1.0.3)
       activesupport (>= 4.2.0.alpha)
     rails-dom-testing (1.0.5)
@@ -250,6 +251,7 @@ DEPENDENCIES
   rails (= 4.2.0)
   rails-assets-lodash!
   rails-assets-metrics-graphics!
+  rails-assets-moment!
   rails_12factor
   rspec-rails
   ruby_spark

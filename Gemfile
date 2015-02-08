@@ -22,6 +22,7 @@ gem 'guard-rspec', require: false, group: :development
 source 'https://rails-assets.org' do
   gem 'rails-assets-lodash'
   gem 'rails-assets-metrics-graphics'
+  gem 'rails-assets-moment'
 end
 
 group :development, :test do
