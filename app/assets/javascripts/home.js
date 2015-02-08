@@ -1,13 +1,18 @@
 $(function () {
-    d3.json('/thermometers/1/temperature_readings.json', function(data1) {
-        data1 = MG.convert.date(data1, 'time', '%Y-%m-%dT%H:%M:%SZ');
-        data1 = MG.convert.number(data1, 'fahrenheit');
+  $.getJSON("/thermometers.json", function(thermometers) {
+    _(thermometers).forEach(function(thermometer) {
+      var thermometerId = thermometer["id"];
+      var readingsUrl = '/thermometers/' + thermometerId + '/temperature_readings.json'
+
+      d3.json(readingsUrl, function(data) {
+        data = MG.convert.date(data, 'time', '%Y-%m-%dT%H:%M:%SZ');
+        data = MG.convert.number(data, 'fahrenheit');
 
         MG.data_graphic({
-          data: data1,
+          data: data,
           width: $('.result').width(),
           height: $('.result').height(),
-          target: ".room-1",
+          target: ".room-" + thermometerId,
           x_accessor: "time",
           y_accessor: "fahrenheit",
           interpolate: "monotone",
@@ -16,24 +21,7 @@ $(function () {
           min_y: 40,
           max_y: 100
         });
+      });
     });
-
-    d3.json('/thermometers/2/temperature_readings.json', function(data2) {
-        data2 = MG.convert.date(data2, 'time', '%Y-%m-%dT%H:%M:%SZ');
-        data2 = MG.convert.number(data2, 'fahrenheit');
-
-        MG.data_graphic({
-          data: data2,
-          width: $('.result').width(),
-          height: $('.result').height(),
-          target: ".room-2",
-          x_accessor: "time",
-          y_accessor: "fahrenheit",
-          interpolate: "monotone",
-          height: 200,
-          width: 400,
-          min_y: 40,
-          max_y: 100
-        });
-    });
+  });
 });
