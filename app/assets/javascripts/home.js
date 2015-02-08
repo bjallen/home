@@ -20,7 +20,7 @@ $(function () {
           interpolate: "monotone",
           small_text: true,
           height: 200,
-          width: 400,
+          full_width: true,
           min_y: 55,
           max_y: 80,
           xax_format: function(date) {
