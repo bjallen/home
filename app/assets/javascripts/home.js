@@ -1,6 +1,6 @@
 $(function () {
     d3.json('/thermometers/1/temperature_readings.json', function(data) {
-        data = MG.convert.date(data, 'time', '%Y-%m-%dT%H:%M:%S.%LZ');
+        data = MG.convert.date(data, 'time', '%Y-%m-%dT%H:%M:%SZ');
         data = MG.convert.number(data, 'fahrenheit');
 
         MG.data_graphic({
