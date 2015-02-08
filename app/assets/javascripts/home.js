@@ -12,7 +12,9 @@ $(function () {
           y_accessor: "fahrenheit",
           interpolate: "monotone",
           height: 200,
-          width: 400
+          width: 400,
+          min_y: 40,
+          max_y: 100
         });
     });
 
@@ -29,7 +31,9 @@ $(function () {
           y_accessor: "fahrenheit",
           interpolate: "monotone",
           height: 200,
-          width: 400
+          width: 400,
+          min_y: 40,
+          max_y: 100
         });
     });
 });
