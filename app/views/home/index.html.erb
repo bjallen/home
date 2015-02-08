@@ -1,6 +1,5 @@
 <% @thermometers.each do |thermometer| %>
   <h2><%= thermometer.room %></h2>
   <h1><%= "#{convert_celsius_to_fahrenheit(thermometer.temperature_readings.last.temperature).to_s} °F" %></h1>
+  <div class="room-<%= thermometer.id %>"></div>
 <% end %>
-
-<div class="result" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
