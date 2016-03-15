@@ -1,7 +1,7 @@
+ruby '2.3.0'
 source 'https://rubygems.org'
-source 'https://rails-assets.org'
 
-gem 'rails', '4.2.0'
+gem 'rails', '5.0.0.beta3'
 gem 'pg'
 gem 'unicorn'
 
@@ -13,7 +13,7 @@ gem 'jquery-rails'
 
 gem 'jbuilder', '~> 2.0'
 gem 'newrelic_rpm'
-gem 'ruby_spark'
+gem 'particlerb'
 
 gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'rails_12factor', group: :production
@@ -26,13 +26,13 @@ source 'https://rails-assets.org' do
 end
 
 group :development, :test do
-  gem 'rspec-rails'
+  gem 'rspec-rails', '3.5.0.beta2'
   gem 'dotenv-rails'
   gem 'byebug'
-  gem 'web-console', '~> 2.0'
   gem 'spring'
   gem 'spring-commands-rspec'
   gem 'factory_girl_rails'
 end
 
-ruby '2.1.5'
+gem 'web-console', '~> 2.0', group: :development
+gem 'rails-controller-testing', group: :test

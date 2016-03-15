@@ -32,7 +32,7 @@ RSpec.describe ThermometersController, :type => :controller do
                               .with(thermometer.to_param)
                               .and_return(thermometer)
 
-      get :edit, { :id => thermometer.to_param }
+      get :edit, :params => { :id => thermometer.to_param }
       expect(assigns(:thermometer)).to eq(thermometer)
     end
   end
@@ -43,10 +43,10 @@ RSpec.describe ThermometersController, :type => :controller do
     describe "with valid params" do
       it "redirects to the thermometers index" do
         expect(Thermometer).to receive(:new)
-                                .with(valid_attributes)
+                                .with(ActionController::Parameters.new(valid_attributes).permit!)
                                 .and_return(thermometer)
         expect(thermometer).to receive(:save).and_return(true)
-        post :create, { :thermometer => valid_attributes }
+        post :create, :params => { :thermometer => valid_attributes }
         expect(response).to redirect_to(thermometers_url)
       end
     end
@@ -54,18 +54,18 @@ RSpec.describe ThermometersController, :type => :controller do
     describe "with invalid params" do
       it "assigns a newly created but unsaved thermometer as @thermometer" do
         expect(Thermometer).to receive(:new)
-                                .with(invalid_attributes)
+                                .with(ActionController::Parameters.new(invalid_attributes).permit!)
                                 .and_return(thermometer)
-        post :create, { :thermometer => invalid_attributes }
+        post :create, :params => { :thermometer => invalid_attributes }
         expect(assigns(:thermometer)).to be(thermometer)
       end
 
       it "re-renders the 'new' template" do
         expect(Thermometer).to receive(:new)
-                                .with(invalid_attributes)
+                                .with(ActionController::Parameters.new(invalid_attributes).permit!)
                                 .and_return(thermometer)
         expect(thermometer).to receive(:save).and_return(false)
-        post :create, {:thermometer => invalid_attributes}
+        post :create, :params => { :thermometer => invalid_attributes }
         expect(response).to render_template("new")
       end
     end
@@ -79,7 +79,7 @@ RSpec.describe ThermometersController, :type => :controller do
                               .with(thermometer.to_param)
                               .and_return(thermometer)
       expect(thermometer).to receive(:destroy)
-      delete :destroy, { :id => thermometer.to_param }
+      delete :destroy, :params => { :id => thermometer.to_param }
     end
 
     it "redirects to the thermometers list" do
@@ -87,7 +87,7 @@ RSpec.describe ThermometersController, :type => :controller do
                               .with(thermometer.to_param)
                               .and_return(thermometer)
       expect(thermometer).to receive(:destroy)
-      delete :destroy, { :id => thermometer.to_param }
+      delete :destroy, :params => { :id => thermometer.to_param }
       expect(response).to redirect_to(thermometers_url)
     end
   end

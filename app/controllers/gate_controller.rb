@@ -3,7 +3,7 @@ class GateController < ApplicationController
   before_action :verify_client_token
 
   def trigger
-    core = RubySpark::Core.new(ENV["GATE_DEVICE_ID"])
+    core = Particle.device(ENV["GATE_DEVICE_ID"])
     core.function("relay", "trigger")
   end
 

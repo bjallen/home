@@ -32,7 +32,7 @@ RSpec.describe SparkCoresController, :type => :controller do
                             .with(spark_core.to_param)
                             .and_return(spark_core)
 
-      get :edit, { :id => spark_core.to_param }
+      get :edit, :params => { :id => spark_core.to_param }
       expect(assigns(:spark_core)).to eq(spark_core)
     end
   end
@@ -43,10 +43,10 @@ RSpec.describe SparkCoresController, :type => :controller do
     describe "with valid params" do
       it "redirects to the spark_core index" do
         expect(SparkCore).to receive(:new)
-                              .with(valid_attributes)
+                              .with(ActionController::Parameters.new(valid_attributes).permit!)
                               .and_return(core)
         expect(core).to receive(:save).and_return(true)
-        post :create, { :spark_core => valid_attributes }
+        post :create, :params => { :spark_core => valid_attributes }
         expect(response).to redirect_to(spark_cores_url)
       end
     end
@@ -54,18 +54,18 @@ RSpec.describe SparkCoresController, :type => :controller do
     describe "with invalid params" do
       it "assigns a newly created but unsaved spark_core as @spark_core" do
         expect(SparkCore).to receive(:new)
-                              .with(invalid_attributes)
+                              .with(ActionController::Parameters.new(invalid_attributes).permit!)
                               .and_return(core)
-        post :create, { :spark_core => invalid_attributes }
+        post :create, :params => { :spark_core => invalid_attributes }
         expect(assigns(:spark_core)).to be(core)
       end
 
       it "re-renders the 'new' template" do
         expect(SparkCore).to receive(:new)
-                              .with(invalid_attributes)
+                              .with(ActionController::Parameters.new(invalid_attributes).permit!)
                               .and_return(core)
         expect(core).to receive(:save).and_return(false)
-        post :create, {:spark_core => invalid_attributes}
+        post :create, :params => { :spark_core => invalid_attributes }
         expect(response).to render_template("new")
       end
     end
@@ -79,7 +79,7 @@ RSpec.describe SparkCoresController, :type => :controller do
                             .with(core.to_param)
                             .and_return(core)
       expect(core).to receive(:destroy)
-      delete :destroy, { :id => core.to_param }
+      delete :destroy, :params => { :id => core.to_param }
     end
 
     it "redirects to the spark_cores list" do
@@ -87,7 +87,7 @@ RSpec.describe SparkCoresController, :type => :controller do
                             .with(core.to_param)
                             .and_return(core)
       expect(core).to receive(:destroy)
-      delete :destroy, { :id => core.to_param }
+      delete :destroy, :params => { :id => core.to_param }
       expect(response).to redirect_to(spark_cores_url)
     end
   end

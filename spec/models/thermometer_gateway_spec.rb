@@ -9,7 +9,7 @@ RSpec.describe ThermometerGateway, :type => :model do
 
   it "requests the variable from spark" do
     device_id = thermometer.spark_core.device_id
-    expect(RubySpark::Core).to receive(:new).with(device_id).and_return(fake_core)
+    expect(Particle).to receive(:device).with(device_id).and_return(fake_core)
     expect(fake_core).to receive(:variable).with("temperature").and_return(4.567)
     temp = ThermometerGateway.temperature_for(thermometer)
     expect(temp).to eq(4.567)
