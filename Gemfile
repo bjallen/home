@@ -26,7 +26,7 @@ source 'https://rails-assets.org' do
 end
 
 group :development, :test do
-  gem 'rspec-rails', '3.5.0.beta2'
+  gem 'rspec-rails', '3.9.1'
   gem 'dotenv-rails'
   gem 'byebug'
   gem 'spring'
