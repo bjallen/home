@@ -15,7 +15,7 @@ gem 'jbuilder', '~> 2.0'
 gem 'newrelic_rpm'
 gem 'particlerb'
 
-gem 'sdoc', '~> 0.4.0', group: :doc
+gem 'sdoc', '~> 2.6.0', group: :doc
 gem 'rails_12factor', group: :production
 gem 'guard-rspec', require: false, group: :development
 
