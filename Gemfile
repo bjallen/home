@@ -1,7 +1,7 @@
 ruby '2.3.0'
 source 'https://rubygems.org'
 
-gem 'rails', '5.0.0.beta3'
+gem 'rails', '8.1.3.1'
 gem 'pg'
 gem 'unicorn'
 
